@@ -5,7 +5,7 @@
 #include <set>
 using namespace std;
 
-int M[100001][20];
+int M[200001][20];
 
 int calc(int j, int k){
     int res = 0;
@@ -14,7 +14,7 @@ int calc(int j, int k){
         k = max(k-M[j][i],0);
         if(k==0)break;
     }
-    if(k)return 10000000;
+    if(k)return 20000000;
     return res;
 }
 
@@ -34,7 +34,7 @@ int main(){
             br++;
         }
     }
-    int mini = 10000000;
+    int mini = 20000000;
     for(int i = 0; i <= maxi; i++){
         mini = min(mini,calc(i,k));
     }
