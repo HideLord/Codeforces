@@ -19,6 +19,11 @@ template<class T>ostream& operator<<(ostream& out, vector<T> & V){
 int n,k,l,sum=0;
 string s;
 vector<int> p;
+
+void rec(int n){
+
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin >> n >> k >> l;
