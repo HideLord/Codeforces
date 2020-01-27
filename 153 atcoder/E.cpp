@@ -17,27 +17,26 @@ template<class T>ostream& operator<<(ostream& out, vector<T> & V){
     return out;
 }
 
-struct A{
-    A() {}
-    A(int a) : m_a(a){}
-    virtual ~A(){}
+long long dp[10001][1001];
+long long A[10000];
+long long B[10000];
 
-    int get(){
-        return m_a;
-    }
-private:
-    int m_a;
-};
+long long H, N;
 
-template<typename T, T t>
-class B{
-    const static T value = t;
-};
-
-void use(A foo){
-    cout << foo.get() << endl;
+long long rec(int h, int m){
+    if (h <= 0)return 0ll;
+    if (dp[h][m] != -1)return dp[h][m];
+    if (m+1 < N) return dp[h][m] = min(rec(h-A[m], m) + B[m], rec(h,m+1));
+    else return dp[h][m] = rec(h-A[m], m) + B[m];
+    return dp[h][m];
 }
 
 int main(){
-    cout << sizeof(B<A, 42>) << endl;
+    ios_base::sync_with_stdio(false);
+    cin >> H >> N;
+    for(int i = 0; i < N; i++){
+        cin >> A[i] >> B[i];
+    }
+    memset(dp,-1,sizeof dp);
+    cout << rec(H,0) << endl;
 }

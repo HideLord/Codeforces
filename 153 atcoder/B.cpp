@@ -17,27 +17,15 @@ template<class T>ostream& operator<<(ostream& out, vector<T> & V){
     return out;
 }
 
-struct A{
-    A() {}
-    A(int a) : m_a(a){}
-    virtual ~A(){}
-
-    int get(){
-        return m_a;
-    }
-private:
-    int m_a;
-};
-
-template<typename T, T t>
-class B{
-    const static T value = t;
-};
-
-void use(A foo){
-    cout << foo.get() << endl;
-}
-
 int main(){
-    cout << sizeof(B<A, 42>) << endl;
+    ios_base::sync_with_stdio(false);
+    long long H;
+    long long N;
+    cin >> H >> N;
+    vector<double> V(N);
+    for(auto & i:V){
+        cin >> i;
+        H-=i;
+    }
+    cout << (H > 0? "No":"Yes") << endl;
 }
